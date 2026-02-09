@@ -125,7 +125,10 @@ task run(type: Exec) {
 	}
 
 	def adb = path + "/platform-tools/adb"
-	commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.example.packagename/com.example.packagename.AndroidLauncher'
+	def appId = android.defaultConfig.applicationId ?: android.namespace
+	def launcherActivity = project.findProperty('launcherActivity') ?: 'AndroidLauncher'
+	def launcherActivityClass = launcherActivity.contains('.') ? launcherActivity : "${appId}.${launcherActivity}"
+	commandLine "$adb", 'shell', 'am', 'start', '-n', "${appId}/${launcherActivityClass}"
 }
 
 eclipse.project.name = appName + "-android"
