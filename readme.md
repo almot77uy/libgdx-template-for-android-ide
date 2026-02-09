@@ -20,3 +20,9 @@ You can use it freely as long as your actions meet license conditions.
 
 You can get a copy of a GNU General Public Licence 3 here: https://www.gnu.org/licenses/
 ```
+
+
+## Gradle compatibility notes
+- Android Gradle Plugin: `7.2.2`
+- Gradle Wrapper: `7.3.3`
+- `applicationId` is aligned with launcher package: `com.example.game`
