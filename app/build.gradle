@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 
 android {
-	compileSdkVersion 29
+	compileSdkVersion 33
 	sourceSets {
 		main {
 			manifest.srcFile 'AndroidManifest.xml'
@@ -32,14 +32,14 @@ android {
 	defaultConfig {
 		applicationId 'com.example.packagename'
 		minSdkVersion 19
-		targetSdkVersion 29
+		targetSdkVersion 33
 		versionCode 1
 		versionName "1.0"
 		multiDexEnabled true
 	}
 	compileOptions {
-		sourceCompatibility "8.0"
-		targetCompatibility "8.0"
+		sourceCompatibility JavaVersion.VERSION_1_8
+		targetCompatibility JavaVersion.VERSION_1_8
 		coreLibraryDesugaringEnabled true
 	}
 	
@@ -51,12 +51,6 @@ android {
 	}
 
 }
-
-repositories {
-	// needed for AAPT2, may be needed for other tools
-	google()
-}
-
 configurations { natives }
 
 dependencies {
