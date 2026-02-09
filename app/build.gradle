@@ -30,7 +30,7 @@ android {
 		exclude 'META-INF/dependencies.txt'
 	}
 	defaultConfig {
-		applicationId 'com.example.packagename'
+		applicationId 'com.example.game'
 		minSdkVersion 19
 		targetSdkVersion 29
 		versionCode 1
@@ -125,7 +125,7 @@ task run(type: Exec) {
 	}
 
 	def adb = path + "/platform-tools/adb"
-	commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.example.packagename/com.example.packagename.AndroidLauncher'
+	commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.example.game/com.example.game.AndroidLauncher'
 }
 
 eclipse.project.name = appName + "-android"
