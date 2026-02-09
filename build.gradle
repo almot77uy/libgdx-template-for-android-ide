@@ -1,10 +1,7 @@
 buildscript {
     repositories {
-        mavenLocal()
-        mavenCentral()
         google()
-        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
-        jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$androidPluginVersion"
@@ -18,7 +15,7 @@ allprojects {
 
 configure(subprojects - project(':app')) {
     apply plugin: 'java-library'
-    sourceCompatibility = 8.0
+    sourceCompatibility = JavaVersion.VERSION_1_8
     compileJava {
         options.incremental = true
     }
@@ -27,14 +24,6 @@ configure(subprojects - project(':app')) {
 subprojects {
     version = '0.0.1-SNAPSHOT'
     ext.appName = 'GameName'
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
-        maven { url 'https://jitpack.io' }
-        jcenter()
-    }
 }
 
 eclipse.project.name = 'GameName' + '-parent'
-
