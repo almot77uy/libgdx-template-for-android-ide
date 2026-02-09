@@ -30,7 +30,7 @@ android {
 		exclude 'META-INF/dependencies.txt'
 	}
 	defaultConfig {
-		applicationId 'com.example.packagename'
+		applicationId 'com.example.game'
 		minSdkVersion 19
 		targetSdkVersion 29
 		versionCode 1
@@ -38,8 +38,8 @@ android {
 		multiDexEnabled true
 	}
 	compileOptions {
-		sourceCompatibility "8.0"
-		targetCompatibility "8.0"
+		sourceCompatibility JavaVersion.VERSION_1_8
+		targetCompatibility JavaVersion.VERSION_1_8
 		coreLibraryDesugaringEnabled true
 	}
 	
@@ -107,6 +107,7 @@ tasks.whenTaskAdded { packageTask ->
 }
 
 task run(type: Exec) {
+	def launchApplicationId = android.defaultConfig.applicationId
 	def path
 	def localProperties = project.file("../local.properties")
 	if (localProperties.exists()) {
@@ -125,7 +126,7 @@ task run(type: Exec) {
 	}
 
 	def adb = path + "/platform-tools/adb"
-	commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.example.packagename/com.example.packagename.AndroidLauncher'
+	commandLine "$adb", 'shell', 'am', 'start', '-n', "$launchApplicationId/com.example.game.AndroidLauncher"
 }
 
 eclipse.project.name = appName + "-android"
